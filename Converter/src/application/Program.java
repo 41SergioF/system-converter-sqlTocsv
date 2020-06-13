@@ -5,9 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import entities.WorkingFile;
+
 /*
  * Esté programa irá ler um arquivo .SQL e converter para .CSV
- * caminho do arquivo SQL /home/csergio/Documentos/Banco_de_Dados/smallRelationsInsertFile.sql
+ * Caminhos dos arquivos SQL 
+ * /home/csergio/Documentos/Banco_de_Dados/smallRelationsInsertFile.sql
+ * /home/csergio/Documentos/Banco_de_Dados/largeRelationsInsertFile.sql
  */
 public class Program {
 
@@ -18,10 +22,12 @@ public class Program {
 		
 		try (BufferedReader sqlFile = new BufferedReader(new FileReader(filePath))){
 			
-			String lineRaed = sqlFile.readLine();//lê uma linha
+			String lineRaed = sqlFile.readLine();//lê uma linha do arquivo SQL
 			
 			while (lineRaed != null ) {
-				System.out.println(lineRaed);
+				System.out.println(lineRaed);//printa a linha
+				String[] info = lineRaed.split(" ");
+				WorkingFile.printList(info);
 				lineRaed = sqlFile.readLine();
 			}
 			
